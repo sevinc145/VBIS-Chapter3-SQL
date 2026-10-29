@@ -39,40 +39,6 @@ FROM (
 ) AS dept_max;
 
 
--- Exercise 3.15(a)
--- Brooklyn-dakı bütün filiallarda hesabı olan müştərilər.
--- Brooklyn filiallarından müştərinin hesabı olmayan filial qalmamalıdır.
-SELECT c.ID, c.customer_name
-FROM customer c
-WHERE NOT EXISTS (
-    SELECT b.branch_name
-    FROM branch b
-    WHERE b.branch_city = 'Brooklyn'
-    EXCEPT
-    SELECT a.branch_name
-    FROM depositor d
-    JOIN account a ON d.account_number = a.account_number
-    WHERE d.ID = c.ID
-);
-
-
--- Exercise 3.15(b)
--- Bankdakı bütün kreditlərin cəmi.
-SELECT SUM(amount) AS total_loan_amount
-FROM loan;
-
-
--- Exercise 3.15(c)
--- Aktivi Brooklyn-dakı ən azı bir filialdan çox olan filiallar.
-SELECT branch_name
-FROM branch
-WHERE assets > SOME (
-    SELECT assets
-    FROM branch
-    WHERE branch_city = 'Brooklyn'
-);
-
-
 -- Exercise 3.24
 -- Physics müəllimi tərəfindən məsləhət verilən Accounting tələbələri.
 SELECT s.name, s.ID

@@ -8,7 +8,7 @@ Chapter 3 Practice Assignment
 
 ## Həll etdiyim tapşırıqlar
 
-Məcburi tapşırıqlar (`mandatory_queries.sql`):
+(`mandatory_queries.sql`):
 
 - 3.11 (a, b, c, d)
 - 3.24
